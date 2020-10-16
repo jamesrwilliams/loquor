@@ -42,11 +42,13 @@ This will then return the following:
 
 ## Tests
 
-Test suite written with [Mocha](https://mochajs.org/) & [Chai](https://www.chaijs.com/) to ensure the`parser()` function correctly processes strings. These do not test the GAS script formatting. 
+Test suite written with [Mocha](https://mochajs.org/) & [Chai](https://www.chaijs.com/) to ensure the`parser()` function correctly processes strings. 
 
 ```
 npm test
 ```
+
+> Please note: These tests do not cover the Google App Script.
 
 ## Todo
 
