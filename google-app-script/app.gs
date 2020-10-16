@@ -12,7 +12,7 @@
 function onOpen() {
   var spreadsheet = SpreadsheetApp.getActive();
   var menuItems = [
-    {name: 'Debug styles...', functionName: 'formatText'},
+    {name: 'Run Formatter', functionName: 'formatText'},
   ];
   spreadsheet.addMenu('Points', menuItems);
 }
@@ -25,20 +25,37 @@ function onOpen() {
 function formatText() {
 
   var sheet = SpreadsheetApp.getActiveSpreadsheet();
-  var input = sheet.getRange("A1");
-  var output = sheet.getRange("B1");
-  var val = input.getValue().toString();
+  var input = sheet.getRange("A2");
+  var output = sheet.getRange("B2");
+  var debug = sheet.getRange("C2");
+  var val = input.getValue();
+
+  var entries = [];
+      entries.push(val);
+
+  var options = {
+    'method' : 'post',
+    'payload' : {
+      'entries': JSON.stringify(entries)
+    }
+  };
+  var response = JSON.parse(UrlFetchApp.fetch('https://156f19995ba4.ngrok.io/parse', options));
+  var temp_response = response[0][0];
 
   var len = val.length; // length of string in A1
   var rich = SpreadsheetApp.newRichTextValue(); //new RichText
       rich.setText(val); //Set Text value in A1 to RichText as base
 
   var style = SpreadsheetApp.newTextStyle(); // Create a new text style for each character
-      style.setForegroundColor('#f00');
+      style.setForegroundColor('#F00');
   var buildStyle = style.build();
 
-  // set this text style to the current character and save it to Rich text
-  rich.setTextStyle(0,4, buildStyle);
+  var start = val.indexOf(temp_response);
+  var end = start + temp_response.length;
+
+  debug.setValue(JSON.stringify(temp_response));
+
+  rich.setTextStyle(start, end, buildStyle); // set this text style to the current character and save it to Rich text
 
   var format = rich.build();
   output.setRichTextValue(format); //Set the final RichTextValue to A1

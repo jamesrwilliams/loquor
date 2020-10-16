@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require("body-parser");
-const { parser, debug } = require('../lib/parser');
+const { parser } = require('../lib/parser');
 const app = express();
 const port = 3000;
 const router = express.Router();
@@ -13,12 +13,16 @@ router.get('/',(req, res) => {
 });
 
 router.post('/parse', (req, res) => {
-  var testCases = req.body;
-  var responses = [];
+  const { entries } = req.body;
+  const responses = [];
 
-  testCases.forEach((test) => {
+  const entriesArray = (typeof entries === 'string' ? JSON.parse(entries) : entries);
+
+  entriesArray.forEach((test) => {
     responses.push(parser(test));
   });
+
+  console.log(responses);
 
   res.json(responses);
 });
