@@ -55,4 +55,5 @@ npm test
 - [ ] Set default text color of the output to red (matches then set to black).
 - [ ] Handle multiple rows rather than singular
 - [ ] Update tests to cover test cases.
+- [ ] Find a better way to handle text insertion for formatting in the GS script to handle non-latin characters
 
