@@ -10,7 +10,7 @@
   "scripts": {
     "test": "mocha",
     "develop": "nodemon server/server.js",
-    "start": "npm run develop"
+    "start": "node server/server.js"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +18,8 @@
   "devDependencies": {
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
-    "mocha": "^8.1.3"
+    "mocha": "^8.1.3",
+    "nodemon": "^2.0.5"
   },
   "dependencies": {
     "express": "^4.17.1",

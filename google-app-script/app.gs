@@ -3,7 +3,7 @@
  *
  * @author James W. <james.williams@points.com>
  */
-
+const ENDPOINT = 'https://156f19995ba4.ngrok.io';
 /**
  * onOpen event from Google Sheets
  *
@@ -39,7 +39,7 @@ function formatText() {
       'entries': JSON.stringify(entries)
     }
   };
-  var response = JSON.parse(UrlFetchApp.fetch('https://156f19995ba4.ngrok.io/parse', options));
+  var response = JSON.parse(UrlFetchApp.fetch(ENDPOINT + '/parse', options));
   var temp_response = response[0][0];
 
   var len = val.length; // length of string in A1

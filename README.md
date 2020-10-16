@@ -13,7 +13,23 @@ The `parse()` expected input is a single string.
 
 ## Getting Started with development
 
-You can use Ngrok to tunnel the app script to your local machine during development.
+Use `npm start` to run the server locally.
+
+Use `npm run develop` to run the server with [nodemon](https://nodemon.io/) to automatically restarts the node server.
+
+You can use [Ngrok](https://ngrok.com/) to tunnel the app script to your local machine during development. Changing the `ENDPOINT` constant at the top of the [app.gs](./google-app-script/app.gs) file to your HTTPs Ngrok tunnel URL will route the script requests to your local server.
 
 ## Tests
+
+Test suite written with [Mocha](https://mochajs.org/)/[Chai](https://www.chaijs.com/) to ensure the`parese()` function correctly processes strings. These do not test the GAS script formatting. 
+
+```
+npm test
+```
+
+## Todo
+
+- [ ] Set default text color of the output to red (matches then set to black).
+- [ ] Handle multiple rows rather than singular
+- [ ] Update tests to cover test cases.
 
