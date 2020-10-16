@@ -4,7 +4,7 @@
  * @author James W. <james.williams@points.com>
  */
 
-const ENDPOINT = 'https://c5e1f680659d.ngrok.io';
+const ENDPOINT = 'https://75c50537de98.ngrok.io';
 
 /**
  * onOpen event from Google Sheets
@@ -117,5 +117,6 @@ function getRows() {
     output.setRichTextValue(format);
 
   });
+
 
 }
