@@ -22,8 +22,6 @@ router.post('/parse', (req, res) => {
     responses.push(parser(test));
   });
 
-  console.log(responses);
-
   res.json(responses);
 });
 
