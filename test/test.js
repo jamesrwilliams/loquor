@@ -51,20 +51,20 @@ describe('parser()', function () {
     });
   });
 
-  // describe('parse merge tokens using "%" correctly', function() {
-  //
-  //     var testCase = "Please enter how many %lp.currency.name.plural% you want to extend.";
-  //     var expected = [[22, 47]];
-  //     var result = parser(testCase);
-  //
-  //     it('should return a single result array', function () {
-  //       expect(result.length).to.equal(1);
-  //     });
-  //
-  //     it('should return the expected string indices', function () {
-  //       expect(result).to.have.deep.members(expected);
-  //     });
-  // });
+  describe('parse merge tokens using "%" correctly', function() {
+
+      var testCase = "Please enter how many %lp.currency.name.plural% you want to extend.";
+      var expected = [[22, 47]];
+      var result = parser(testCase);
+
+      it('should return a single result array', function () {
+        expect(result.length).to.equal(1);
+      });
+
+      it('should return the expected string indices', function () {
+        expect(result).to.have.deep.members(expected);
+      });
+  });
 
   describe('should handle two matching text nodes correctly', function() {
     var testCase = "<p>One</p><p>Two</p>";
