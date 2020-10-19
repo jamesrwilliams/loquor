@@ -22,7 +22,7 @@ describe('parser()', function () {
 
   });
 
-  describe('parse a two part HTML string correctly', function() {
+  describe('parse a two part HTML string correctly (inc spaces)', function() {
     var testCase = "<p>Hello World</p> <span>Foo bar</span>";
     var expected = [[3, 13],[25, 31]];
     var result = parser(testCase);
@@ -45,23 +45,39 @@ describe('parser()', function () {
     it('should return an empty array', function () {
       expect(result.length).to.equal(0);
     });
+
+    it('should return the expected string indices', function () {
+      expect(result).to.have.deep.members(expected);
+    });
   });
 
-  describe('parse merge tokens using "%" correctly', function() {
+  // describe('parse merge tokens using "%" correctly', function() {
+  //
+  //     var testCase = "Please enter how many %lp.currency.name.plural% you want to extend.";
+  //     var expected = [[22, 47]];
+  //     var result = parser(testCase);
+  //
+  //     it('should return a single result array', function () {
+  //       expect(result.length).to.equal(1);
+  //     });
+  //
+  //     it('should return the expected string indices', function () {
+  //       expect(result).to.have.deep.members(expected);
+  //     });
+  // });
 
-      var testCase = "Please enter how many %lp.currency.name.plural% you want to extend.";
-      var expected = [[22, 47]];
-      var result = parser(testCase);
+  describe('should handle two matching text nodes correctly', function() {
+    var testCase = "<p>One</p><p>Two</p>";
+    var expected = [[3, 5], [13, 15]];
+    var result = parser(testCase);
 
-      console.log(result, expected);
+    it('should return a single result array', function () {
+      expect(result.length).to.equal(2);
+    });
 
-      it('should return a single result array', function () {
-        expect(result.length).to.equal(1);
-      });
-
-      it('should return the expected string indices', function () {
-        expect(result).to.have.deep.members(expected);
-      });
-  })
+    it('should return the expected string indices', function () {
+      expect(result).to.have.deep.members(expected);
+    });
+  });
 
 });

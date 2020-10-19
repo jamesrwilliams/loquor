@@ -15,7 +15,7 @@ function onOpen() {
   var spreadsheet = SpreadsheetApp.getActive();
   var menuItems = [
     {name: 'Run Formatter', functionName: 'formatText'},
-    {name: 'Run debug function', functionName: 'getRows' },
+    {name: 'Run Formatter v2', functionName: 'getRows' },
   ];
   spreadsheet.addMenu('Points', menuItems);
 }
