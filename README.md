@@ -19,7 +19,12 @@ The Google App Script (GAS) portion of this project accepts an array of arrays o
 
 The `parser()` expected input is a single string.
 
-> 
+## Example parse rules
+
+- Ignore `{}` wrapped strings e.g. `{foo}`
+- Ignore `%` wrapped strings e.g. `%foo%` 
+- Ignore all HTML tags
+- Ignore URLs (both relative and absolute)
 
 ## Getting started with development
 
