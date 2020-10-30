@@ -1,5 +1,11 @@
-# Translations formatter
+# pts-loquor
 
+A translation API that parses strings and returns ranges of non-HTML/Templating syntax.
+
+E.g. `<p>Hello World</p>` becomes `[[[3,13]]]`;
+
+This application deploys automatically to https://loquor.herokuapp.com - This is running as a free Heroku dyno so might take some time to respond initially as it starts up.
+ 
 ## Overview
 
 Two core components of this deliverable:
@@ -10,6 +16,8 @@ Two core components of this deliverable:
 The Google App Script (GAS) portion of this project accepts an array of arrays of pairs of numbers denoting the start and end of the "translatable" sub-strings of the current cell. This component script fails safe. It will assume the whole string is not translatable unless a provided range of characters is provided denoting substrings that need translating.
 
 The `parser()` expected input is a single string.
+
+> 
 
 ## Getting started with development
 

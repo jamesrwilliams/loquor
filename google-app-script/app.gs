@@ -4,7 +4,7 @@
  * @author James W. <james.williams@points.com>
  */
 
-const ENDPOINT = 'https://75c50537de98.ngrok.io';
+const ENDPOINT = 'https://loquor.herokuapp.com';
 
 /**
  * onOpen event from Google Sheets

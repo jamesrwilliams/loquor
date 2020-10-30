@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Translation formatting service</title>
+	<title>pts-loquor</title>
 	<style>
 	  html,
 	  body {
@@ -13,31 +13,44 @@
 	  }
 		body {
 		  box-sizing: border-box;
-          font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
-          'Arial', sans-serif;
+          font-family: ui-monospace,
+          Menlo, Monaco,
+          "Cascadia Mono", "Segoe UI Mono",
+          "Roboto Mono",
+          "Oxygen Mono",
+          "Ubuntu Monospace",
+          "Source Code Pro",
+          "Fira Mono",
+          "Droid Sans Mono",
+          "Courier New", monospace;
           margin: 0 auto;
 		  display: flex;
 		  justify-content: center;
 		  align-items: center;
 		  height: 100%;
-		  background: #eee;
+		  background: #fff;
 		}
 
 		main {
-		  background: #fff;
-		  border: 1px solid #ccc;
           padding: 20px;
 		  max-width: 480px;
 		  margin: 20px;
 		  border-radius: 3px;
 		}
+		a {
+		  position: absolute;
+		  bottom: 5px;
+		  left: 5px;
+		  font-size: 11px;
+		}
 	</style>
 </head>
 <body>
 	<main>
-		<h1 style="margin-top: 0"><a href="https://github.com/jamesrwilliams/pts-translations-formatter">pts-translations-formatter</a></h1>
-		<p>This is a translation formatting script that parses arbitrary strings and returns bits of normal english that looks like it should be translated.</p>
-		<p>See the <a href="https://docs.google.com/document/d/1GOupiSKzrzbxDY7snxy7Vx9YMmNiNlVwcjXlEub4HBY/edit">docs</a>, <a href="https://docs.google.com/spreadsheets/d/13Ie_rDHyEcR3LkbJ9vm4IY9rgzkwIFjSwJVSlmDW714/edit#gid=307042213">test sheet</a>, and the <a href="https://github.com/jamesrwilliams/pts-translations-formatter">repository</a> for more information.</p>
+		<blockquote style="line-height: 1.5rem">
+			“The way to get started is to quit talking and begin doing.” - WED
+		</blockquote>
+		<a href="https://jamesrwilliams.ca/?utm_source=heroku&utm_medium=link&utm_campaign=loquor">jamesrwilliams.ca</a>
 	</main>
 </body>
 </html>
