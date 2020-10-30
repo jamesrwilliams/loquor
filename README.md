@@ -1,5 +1,7 @@
 # pts-loquor
 
+![CircleCI](https://circleci.com/gh/jamesrwilliams/pts-loquor.svg?style=shield&circle-token=d2bdf5a59f5587ed2d43d1125229108b145d174f)
+
 A translation API that parses strings and returns ranges of non-HTML/Templating syntax.
 
 E.g. `<p>Hello World</p>` becomes `[[[3,13]]]`;
