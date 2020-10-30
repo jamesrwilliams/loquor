@@ -34,9 +34,7 @@ This will then return the following:
 
 ```json
 [
-    [
-        "Hello world"
-    ]
+    [[3, 13]]
 ]
 ```
 
