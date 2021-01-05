@@ -1,16 +1,38 @@
-var assert = require('assert');
-var chai = require('chai');
-var expect = chai.expect;
+const chai = require('chai');
+const expect = chai.expect;
 
 const { parser } = require('../lib/parser');
 
 describe('parser()', function () {
 
-  describe('parse a simple HTML string correctly', function () {
+  describe('parse should correct respond to an empty string', function() {
+    const testCase = "";
+    const result = parser(testCase);
 
-    var testCase = "<p>Hello World</p>";
-    var expected = [[3, 13]];
-    var result = parser(testCase);
+    it('should return an empty array', function () {
+      expect(result).to.be.empty;
+    });
+  });
+
+  describe('parse should correct respond to an empty string', function() {
+    const testCase = "foo bar&nsbp;";
+    const expected = [[0,17]];
+    const result = parser(testCase);
+
+    it('should return 1 valid substring', function () {
+      expect(result.length).to.equal(1);
+    });
+
+    it('should return the expected string indices', function () {
+      expect(result).to.have.deep.members(expected);
+    });
+
+  });
+
+  describe('parse a simple HTML string correctly', function () {
+    const testCase = "<p>Hello World</p>";
+    const expected = [[3, 14]];
+    const result = parser(testCase);
 
     it('should return 1 valid substring', function () {
       expect(result.length).to.equal(1);
@@ -23,9 +45,9 @@ describe('parser()', function () {
   });
 
   describe('parse a two part HTML string correctly (inc spaces)', function() {
-    var testCase = "<p>Hello World</p> <span>Foo bar</span>";
-    var expected = [[3, 13],[25, 31]];
-    var result = parser(testCase);
+    const testCase = "<p>Hello World</p> <span>Foo bar</span>";
+    const expected = [[3, 14],[25, 32]];
+    const result = parser(testCase);
 
     it('should return 2 valid substrings', function () {
       expect(result.length).to.equal(2);
@@ -65,11 +87,25 @@ describe('parser()', function () {
   //       expect(result).to.have.deep.members(expected);
   //     });
   // });
+  // describe('handle HTML entities correctly', function() {
+  //
+  //   var testCase = "Hello&nbsp;World";
+  //   var expected = [];
+  //   var result = parser(testCase);
+  //
+  //   it('should return an empty array', function () {
+  //     expect(result.length).to.equal(0);
+  //   });
+  //
+  //   it('should return the expected string indices', function () {
+  //     expect(result).to.have.deep.members(expected);
+  //   });
+  // });
 
   describe('should handle two matching text nodes correctly', function() {
-    var testCase = "<p>One</p><p>Two</p>";
-    var expected = [[3, 5], [13, 15]];
-    var result = parser(testCase);
+    const testCase = '<p>One</p><p>Two</p>'
+    const expected = [[3, 6], [13, 16]]
+    const result = parser(testCase);
 
     it('should return a single result array', function () {
       expect(result.length).to.equal(2);
