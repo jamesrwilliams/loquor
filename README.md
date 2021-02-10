@@ -1,6 +1,6 @@
 # pts-loquor
 
-![CircleCI](https://circleci.com/gh/jamesrwilliams/pts-loquor.svg?style=shield&circle-token=d2bdf5a59f5587ed2d43d1125229108b145d174f) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=loquor)
+![CircleCI](https://circleci.com/gh/jamesrwilliams/pts-loquor.svg?style=shield&circle-token=d2bdf5a59f5587ed2d43d1125229108b145d174f) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=loquor) [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
 A translation script that parses strings and returns ranges of non-HTML/Templating syntax used by a corresponding Google Apps Script file to format strings as rich text on output.  With the aim is to speed up complex translation requests by automatically highlighting translation tokens of correct strings to translate. 
 
@@ -67,9 +67,9 @@ This script then exposes your local server from running `npm start` on a randoml
 
 ## The Google App Script
 
-The source code for this component can be found in the `./google-app-script` directory. This interfaces with the Google Sheet of translations and handles the formatting of the cells. This script registeres a custom menu, and a corresponding menu option to trigger the script processing.
+The source code for this component can be found in the `./google-app-script` directory. This interfaces with the Google Sheet of translations and handles the formatting of the cells. This script registers a custom menu, and a corresponding menu option to trigger the script processing.
 
-THis script then reads all the values from the `B2-B999` range and sends that as a HTTP request to the server endpoint configured in the script. The API responds with a 2d array of results, first dimension representing the row, and subsequent arrays are substrings we're highlighting for translation with two numbers being their start and end offsets of their original string.
+This script then reads all the values from the `B2-B999` range and sends that as a HTTP request to the server endpoint configured in the script. The API responds with a 2d array of results, first dimension representing the row, and subsequent arrays are substrings we're highlighting for translation with two numbers being their start and end offsets of their original string.
 
 This component script fails safe. It will assume the whole string is not translatable unless a provided range of characters is provided denoting substrings that need translating.
 
@@ -77,13 +77,18 @@ This component script fails safe. It will assume the whole string is not transla
 
 Below is a summary of the expected behaviour of the parser library in relation to the various templating and sample strings we're expecting.
 
-| Rule | Example Input | Example Output |
-| --- | ----- | --- |
-| Do not format `{}` wrapped strings | `{foo}` | <span style="color: red;">{foo}</span> |
-| Do not format `%` wrapped strings | `%foo%` | <span style="color: red;">%foo%</span> |
-| Do not format HTML tags | `<p>Foo<p/>` | <span style="color: red;">&lt;p&gt;</span>Foo<span style="color: red;">&lt;/p&gt;</span> |
-| Do not format URLs (both relative and absolute) | `../../foo/src.img` | <span style="color: red;">../../foo/src.img</span> |
-| Do not format encoded HTML entities | `Hello&nbsp;World` | Hello<span style="color: red;">&amp;nbsp;</span>World |
+Implementation status badges
+- Completed: ✅
+- In Progress:  ⚠️ 
+- Pending: ⚪
+
+| Ruleset | Rule | Example Input | Example Output | Status |
+| --- | --- | ----- | --- | --- |
+| Handlebars | Do not format `{}` wrapped strings | `{foo}` | <span style="color: red;">{foo}</span> | ⚠️ |
+| Twig | Do not format `%` wrapped strings | `%foo%` | <span style="color: red;">%foo%</span> |  ⚠️ |
+| HTML | Do not format HTML tags | `<p>Foo<p/>` | <span style="color: red;">&lt;p&gt;</span>Foo<span style="color: red;">&lt;/p&gt;</span> | ⚠️ |
+| HTML | Do not format encoded HTML entities | `Hello&nbsp;World` | Hello<span style="color: red;">&amp;nbsp;</span>World | ⚠️ |
+| URLs | Do not format URLs (both relative and absolute) | `../../foo/src.img` | <span style="color: red;">../../foo/src.img</span> | ⚠️ |
 
 ## Tests
 
@@ -93,7 +98,9 @@ Test suite written with [Mocha](https://mochajs.org/) & [Chai](https://www.chaij
 npm test
 ```
 
-_Please note: These tests do not cover the Google App Script._
+Tests are broken into separate "rule sets" that break out similar groups of assurances, such as plaintext vs HTML based tests. 
+
+_Please note: These tests **do not** cover the Google App Script. Only the formatting logic of the API_
 
 ## Todo
 
