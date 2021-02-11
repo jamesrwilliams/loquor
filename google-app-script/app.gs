@@ -27,12 +27,10 @@ function getRows() {
   var input = sheet.getRange("A2:A999");
   var values = input.getValues();
 
-  var entries = values.filter((node) => node[0] !== '');
-
   var options = {
     'method' : 'post',
     'payload' : {
-      'entries': JSON.stringify(entries)
+      'entries': JSON.stringify(values)
     }
   };
 
