@@ -23,6 +23,7 @@ Is formatted automatically to look like this:
 - [Getting started](#getting-started)
 - [Google Apps Script](#the-google-app-script)
 - [Tests](#tests)
+- [System Overview](#system-overview)
 - [Todo](#todo)
 
 ## Getting Started
@@ -89,6 +90,10 @@ Implementation status badges
 | HTML | Do not format HTML tags | `<p>Foo<p/>` | <span style="color: red;">&lt;p&gt;</span>Foo<span style="color: red;">&lt;/p&gt;</span> | ⚠️ |
 | HTML | Do not format encoded HTML entities | `Hello&nbsp;World` | Hello<span style="color: red;">&amp;nbsp;</span>World | ⚠️ |
 | URLs | Do not format URLs (both relative and absolute) | `../../foo/src.img` | <span style="color: red;">../../foo/src.img</span> | ⚠️ |
+
+## System Overview
+
+![Diagram](./docs/graphics/pts-api-formatter.svg)
 
 ## Tests
 
