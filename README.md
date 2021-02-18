@@ -1,6 +1,6 @@
-# pts-loquor
+# Loquor
 
-![CircleCI](https://circleci.com/gh/jamesrwilliams/pts-loquor.svg?style=shield&circle-token=d2bdf5a59f5587ed2d43d1125229108b145d174f) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=loquor) [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+![CircleCI](https://circleci.com/gh/jamesrwilliams/loquor.svg?style=shield&circle-token=d2bdf5a59f5587ed2d43d1125229108b145d174f) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=loquor) [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
 A translation script that parses strings and returns ranges of non-HTML/Templating syntax used by a corresponding Google Apps Script file to format strings as rich text on output.  With the aim is to speed up complex translation requests by automatically highlighting translation tokens of correct strings to translate. 
 
