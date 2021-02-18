@@ -3,9 +3,9 @@ const expect = chai.expect;
 
 const { htmlTagsParser, htmlEntitiesParser } = require('../../lib/rules/html.rules');
 
-describe('HTML', function() {
+describe('Syntax: HTML', function() {
 
-  describe('Rules: htmlEntitiesParser()', function() {
+  describe('htmlEntitiesParser()', function() {
 
     it('should mark HTML entities', function () {
 
@@ -50,7 +50,6 @@ describe('HTML', function() {
       const encoded = Array(testCase.length + 1).join('0');
       const result = htmlTagsParser(testCase, encoded);
 
-      expect(result.length).to.equal(expected.length);
       expect(result).to.equal(expected);
     });
 
@@ -61,7 +60,6 @@ describe('HTML', function() {
       const encoded = Array(testCase.length + 1).join('0');
       const result = htmlTagsParser(testCase, encoded);
 
-      expect(result.length).to.equal(expected.length);
       expect(result).to.equal(expected);
     });
 

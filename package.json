@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "mocha tests/**/*.test.js",
-    "coverage": "nyc --reporter=html mocha",
+    "coverage": "nyc --reporter=html mocha tests/**/*.test.js",
     "develop": "nodemon server/server.js",
     "develop:ngrok": "ngrok http 3000",
     "start": "node server/server.js"

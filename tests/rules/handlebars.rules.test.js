@@ -3,7 +3,9 @@ const expect = chai.expect;
 
 const { handlebarsParser } = require('../../lib/rules/handlebars.rules');
 
-describe('Rules: handlebarsParser()', () => {
+describe('Syntax Handlebars', () => {
+
+  describe('Rules: handlebarsParser()', () => {
 
   it('should ignore anything that is not handlebars syntax', () => {
     const testInput = '<p>Hello firstName</p>';
@@ -45,5 +47,18 @@ describe('Rules: handlebarsParser()', () => {
     expect(result).to.equal(expectation);
 
   });
+
+  it('should correctly select strings with formatters', () => {
+    const testInput   = '<p>Hello world! Your balance is {limitRemaining, number}</p>';
+    const formatString = Array(testInput.length + 1).join('0');
+    const expectation = `000000000000000000000000000000001111111111111111111111110000`;
+
+    const result = handlebarsParser(testInput, formatString);
+    expect(testInput.length).to.equal(formatString.length);
+
+    expect(result).to.equal(expectation);
+  });
+
+});
 
 });
