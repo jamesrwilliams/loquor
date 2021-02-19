@@ -34,6 +34,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn build-test
+      - run: npm run test:coverage:ci
       # Send coverage results to Codacy
       - run: cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage --token ${coverageToken}
