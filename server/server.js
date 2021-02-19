@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require("body-parser");
-const { parser } = require('../lib/parser');
+const { core } = require('../lib/core/core');
 const app = express();
 const port = process.env.PORT || 3000;
 const router = express.Router();
@@ -19,7 +19,7 @@ router.post('/parse', (req, res) => {
   const entriesArray = (typeof entries === 'string' ? JSON.parse(entries) : entries);
 
   entriesArray.forEach((test) => {
-    responses.push(parser(test));
+    responses.push(core(test));
   });
 
   res.json(responses);

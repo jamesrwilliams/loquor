@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
-  "directories": {
-    "lib": "lib",
-    "test": "test"
+  "private": true,
+  "mocha": {
+    "spec": "lib/**/*.test.js"
   },
   "scripts": {
     "test": "mocha",
-    "coverage": "nyc --reporter=html mocha",
+    "test:coverage": "nyc --reporter=html mocha",
     "develop": "nodemon server/server.js",
     "develop:ngrok": "ngrok http 3000",
     "start": "node server/server.js"
