@@ -6,6 +6,3 @@ workflows:
   node-tests:
     jobs:
       - node/test
-      - coverage-reporter/send_report:
-        coverage-reports: 'lcov.info'
-        project-token: ${coverageToken}

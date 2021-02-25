@@ -1,7 +1,7 @@
 /**
  * Find and format particular strings
  *
- * @author James W. <james.williams@points.com>
+ * @author James W. <james@jamesrwilliams.ca>
  */
 
 const ENDPOINT = 'https://loquor.herokuapp.com';
@@ -38,39 +38,44 @@ function getRows() {
 
   translatableStrings.forEach((row, index) => {
 
-    var originalValue = values[index][0];
+    var originalValue = values[index][0].toString();
     var rangeKey = `B${index + 2}`;
 
-    //new RichTextValue that we're going to apply formatting to.
-    var rich = SpreadsheetApp.newRichTextValue();
-    rich.setText(originalValue);
+    if(originalValue !== '') {
+      //new RichTextValue that we're going to apply formatting to.
+      var rich = SpreadsheetApp.newRichTextValue();
+      rich.setText(originalValue);
 
-    // Create a new text style for each character
-    var defaultStyle = SpreadsheetApp.newTextStyle();
-    defaultStyle.setForegroundColor('#F00');
-    var defaultStyleBuilt = defaultStyle.build();
+      // Create a new text style for each character
+      var defaultStyle = SpreadsheetApp.newTextStyle();
+      defaultStyle.setForegroundColor('#000');
+      var defaultStyleBuilt = defaultStyle.build();
 
-    var highlightStyle = SpreadsheetApp.newTextStyle();
-    highlightStyle.setForegroundColor('#000');
-    var highlightStyleBuilt = highlightStyle.build();
+      var highlightStyle = SpreadsheetApp.newTextStyle();
+      highlightStyle.setForegroundColor('#F00');
+      var highlightStyleBuilt = highlightStyle.build();
 
-    rich.setTextStyle(0, originalValue.length, defaultStyleBuilt);
+      rich.setTextStyle(0, originalValue.length, defaultStyleBuilt);
 
-    var debug = sheet.getRange(`C${index + 2}`);
-    debug.setValue(JSON.stringify(row));
+      var debug = sheet.getRange(`C${index + 2}`);
+      debug.setValue(JSON.stringify(row));
 
-    row.forEach((result) => {
-      if(result) {
-        rich.setTextStyle(result[0], result[1] + 1, highlightStyleBuilt);
-      }
-    });
+      row.forEach((result) => {
+        if(result) {
+          if(result[1] === originalValue.length - 1) {
+            rich.setTextStyle(result[0], result[1] + 1, highlightStyleBuilt);
+          } else {
+            rich.setTextStyle(result[0], result[1], highlightStyleBuilt);
+          }
+        }
+      });
 
-    var output = sheet.getRange(rangeKey);
+      var output = sheet.getRange(rangeKey);
 
-    var format = rich.build();
-    output.setRichTextValue(format);
+      var format = rich.build();
+      output.setRichTextValue(format);
+    }
 
   });
-
 
 }

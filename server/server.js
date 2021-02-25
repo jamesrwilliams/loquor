@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require("body-parser");
-const { core } = require('../lib/core/core');
+const { encodedToIndex } = require('../lib/utils/encodedToIndex/encodedToIndex');
+const { core } = require('../lib/encodeValue/encodeValue');
 const app = express();
 const port = process.env.PORT || 3000;
 const router = express.Router();
@@ -15,12 +16,17 @@ router.get('/',(req, res) => {
 router.post('/parse', (req, res) => {
   const { entries } = req.body;
   const responses = [];
-
   const entriesArray = (typeof entries === 'string' ? JSON.parse(entries) : entries);
 
-  entriesArray.forEach((test) => {
-    responses.push(core(test));
-  });
+  if(entriesArray) {
+    entriesArray.forEach((test) => {
+
+      let encoded = core(test[0]);
+      let indexed = encodedToIndex(encoded);
+
+      responses.push(indexed);
+    });
+  }
 
   res.json(responses);
 });
@@ -28,5 +34,5 @@ router.post('/parse', (req, res) => {
 app.use("/", router);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Server running on port ${port}`)
 });
