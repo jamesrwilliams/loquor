@@ -20,11 +20,11 @@ Is formatted automatically to look like this:
  
 ## Contents
 
-- [Getting started](#getting-started)
-- [Google Apps Script](#the-google-app-script)
-- [Tests](#tests)
-- [System Overview](#system-overview)
-- [Todo](#todo)
+  - [Getting started](#getting-started)
+  - [Google Apps Script](#the-google-app-script)
+  - [Tests](#tests)
+  - [System Overview](#system-overview)
+  - [Todo](#todo)
 
 ## Getting Started
 
@@ -58,7 +58,7 @@ Ideally you set up a test in `./test.js` then add your functionality to ensure t
 
 You can use [Ngrok](https://ngrok.com/) to tunnel the Google Apps Script to your local machine during development. To get started follow the [setup instructions](https://dashboard.ngrok.com/get-started/setup) and then run:
 
-```
+```bash
 develop:ngrok
 ```
 
@@ -79,9 +79,9 @@ This component script fails safe. It will assume the whole string is not transla
 Below is a summary of the expected behaviour of the parser library in relation to the various templating and sample strings we're expecting.
 
 Implementation status badges
-- Completed: ✅
-- In Progress:  ⚠️ 
-- Pending: ⚪
+  - Completed: ✅
+  - In Progress:  ⚠️ 
+  - Pending: ⚪
 
 | Ruleset | Rule | Example Input | Example Output | Status |
 | --- | --- | ----- | --- | --- |
@@ -99,7 +99,7 @@ Implementation status badges
 
 Test suite written with [Mocha](https://mochajs.org/) & [Chai](https://www.chaijs.com/) to ensure the`parser()` function correctly processes strings. 
 
-```
+```bash
 npm test
 ```
 
@@ -108,7 +108,6 @@ Tests are broken into separate "rule sets" that break out similar groups of assu
 _Please note: These tests **do not** cover the Google App Script. Only the formatting logic of the API_
 
 ## Todo
-
-- [ ] Handle non-latin characters - Unsure of the requirement here as we're always using English as the base input and translating from there.
-- [ ] Expand script behavior to cover full sample
+  - [ ] Handle non-latin characters - Unsure of the requirement here as we're always using English as the base input and translating from there.
+  - [ ] Expand script behavior to cover full sample
 
