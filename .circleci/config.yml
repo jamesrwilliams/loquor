@@ -5,4 +5,18 @@ orbs:
 workflows:
   node-tests:
     jobs:
+      - coverage
       - node/test
+jobs:
+  coverage:
+    docker:
+      - image: felicianotech/docker-hugo:0.27.1
+    steps:
+      - checkout
+      - run: echo "Running tests"
+      - run: npm install
+      - run: npm test
+      - run:
+          name: "Sending coverage"
+          command: |
+            bash <(curl -Ls https://coverage.codacy.com/get.sh) report
