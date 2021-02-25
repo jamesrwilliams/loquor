@@ -1,8 +1,8 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
+  coverage-reporter: codacy/coverage-reporter@11.9.2
 workflows:
   node-tests:
     jobs:
       - node/test
-

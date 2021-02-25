@@ -1,6 +1,6 @@
 # Loquor
 
-![CircleCI](https://circleci.com/gh/jamesrwilliams/loquor.svg?style=shield&circle-token=d2bdf5a59f5587ed2d43d1125229108b145d174f) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=loquor) [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+![CircleCI](https://circleci.com/gh/jamesrwilliams/loquor.svg?style=shield&circle-token=d2bdf5a59f5587ed2d43d1125229108b145d174f) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=loquor) [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/829b3f806af34117b6de3025226d9274)](https://www.codacy.com/gh/jamesrwilliams/loquor/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jamesrwilliams/loquor&amp;utm_campaign=Badge_Grade)
 
 A translation script that parses strings and returns ranges of non-HTML/Templating syntax used by a corresponding Google Apps Script file to format strings as rich text on output.  With the aim is to speed up complex translation requests by automatically highlighting translation tokens of correct strings to translate. 
 
@@ -20,11 +20,11 @@ Is formatted automatically to look like this:
  
 ## Contents
 
-- [Getting started](#getting-started)
-- [Google Apps Script](#the-google-app-script)
-- [Tests](#tests)
-- [System Overview](#system-overview)
-- [Todo](#todo)
+  - [Getting started](#getting-started)
+  - [Google Apps Script](#the-google-app-script)
+  - [Tests](#tests)
+  - [System Overview](#system-overview)
+  - [Todo](#todo)
 
 ## Getting Started
 
@@ -58,7 +58,7 @@ Ideally you set up a test in `./test.js` then add your functionality to ensure t
 
 You can use [Ngrok](https://ngrok.com/) to tunnel the Google Apps Script to your local machine during development. To get started follow the [setup instructions](https://dashboard.ngrok.com/get-started/setup) and then run:
 
-```
+```bash
 develop:ngrok
 ```
 
@@ -79,9 +79,9 @@ This component script fails safe. It will assume the whole string is not transla
 Below is a summary of the expected behaviour of the parser library in relation to the various templating and sample strings we're expecting.
 
 Implementation status badges
-- Completed: ✅
-- In Progress:  ⚠️ 
-- Pending: ⚪
+  - Completed: ✅
+  - In Progress:  ⚠️ 
+  - Pending: ⚪
 
 | Ruleset | Rule | Example Input | Example Output | Status |
 | --- | --- | ----- | --- | --- |
@@ -99,7 +99,7 @@ Implementation status badges
 
 Test suite written with [Mocha](https://mochajs.org/) & [Chai](https://www.chaijs.com/) to ensure the`parser()` function correctly processes strings. 
 
-```
+```bash
 npm test
 ```
 
@@ -108,7 +108,6 @@ Tests are broken into separate "rule sets" that break out similar groups of assu
 _Please note: These tests **do not** cover the Google App Script. Only the formatting logic of the API_
 
 ## Todo
-
-- [ ] Handle non-latin characters - Unsure of the requirement here as we're always using English as the base input and translating from there.
-- [ ] Expand script behavior to cover full sample
+  - [ ] Handle non-latin characters - Unsure of the requirement here as we're always using English as the base input and translating from there.
+  - [ ] Expand script behavior to cover full sample
 
