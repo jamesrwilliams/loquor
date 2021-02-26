@@ -17,4 +17,4 @@ jobs:
       - run:
           name: "Sending coverage"
           command: |
-            bash <(curl -Ls https://coverage.codacy.com/get.sh) report -t $coverageToken
+            bash <(curl -Ls https://coverage.codacy.com/get.sh) report -t ${coverageToken} -r /coverage/lcov.info
