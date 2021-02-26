@@ -1,12 +1,10 @@
 version: 2.1
 orbs:
-  node: circleci/node@3.0.0
   coverage-reporter: codacy/coverage-reporter@11.9.2
 workflows:
   node-tests:
     jobs:
       - coverage
-      - node/test
 jobs:
   coverage:
     docker:
@@ -19,4 +17,4 @@ jobs:
       - run:
           name: "Sending coverage"
           command: |
-            bash <(curl -Ls https://coverage.codacy.com/get.sh) report
+            bash <(curl -Ls https://coverage.codacy.com/get.sh) report -t $coverageToken
