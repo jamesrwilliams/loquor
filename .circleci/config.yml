@@ -10,7 +10,7 @@ workflows:
 jobs:
   coverage:
     docker:
-      - image: felicianotech/docker-hugo:0.27.1
+      - image: circleci/node:latest
     steps:
       - checkout
       - run: echo "Running tests"
