@@ -1,8 +1,19 @@
 version: 2.1
 orbs:
-  node: circleci/node@3.0.0
   coverage-reporter: codacy/coverage-reporter@11.9.2
 workflows:
-  node-tests:
+  test:
     jobs:
-      - node/test
+      - coverage
+jobs:
+  coverage:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run test:coverage:ci
+      - run:
+          name: "Sending coverage"
+          command: |
+            bash <(curl -Ls https://coverage.codacy.com/get.sh) report -t ${coverageToken} -r ./coverage/lcov.info

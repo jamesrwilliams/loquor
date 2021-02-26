@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { encodedToIndex } = require('../lib/utils/encodedToIndex/encodedToIndex');
-const { encodeValue } = require('../lib/utils/encodeValue/encodeValue');
+const { entry } = require('../lib/entry');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,10 +20,7 @@ router.post('/parse', (req, res) => {
 
   if (entriesArray) {
     entriesArray.forEach((test) => {
-      const encoded = encodeValue(test[0]);
-      const indexed = encodedToIndex(encoded);
-
-      responses.push(indexed);
+      responses.push(entry(test[0]));
     });
   }
 
