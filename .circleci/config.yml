@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   coverage-reporter: codacy/coverage-reporter@11.9.2
 workflows:
-  node-tests:
+  test:
     jobs:
       - coverage
 jobs:
@@ -11,7 +11,6 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: echo "Running tests"
       - run: npm install
       - run: npm run test:coverage:ci
       - run:
